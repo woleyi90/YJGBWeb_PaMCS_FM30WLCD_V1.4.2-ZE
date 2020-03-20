@@ -599,13 +599,13 @@ void SetSystemParamForA(void)
 {	
 	u8 display[50];
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "7.调制模式");
+	sprintf(display, "7.Audio Mode Set");
 	PrintGB(1,0,display);
 	
 	sprintf(display, "*");
 	PrintGB(0,0,display);
 	
-	sprintf(display, "8.调制度细调");
+	sprintf(display, "8.Modulate Fine");
 	PrintGB(1,1,display);
 	
 }
@@ -613,10 +613,10 @@ void SetSystemParamForB(void)
 {	
 	u8 display[50];
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "7.调制模式");
+	sprintf(display, "7.Audio Mode Set");
 	PrintGB(1,0,display);
 
-	sprintf(display, "8.调制度细调");
+	sprintf(display, "8.Modulate Fine");
 	PrintGB(1,1,display);
 	
 	sprintf(display, "*");
@@ -626,24 +626,24 @@ void SetSystemParamFive(void)
 {	
 	u8 display[50];
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "9.RDS 幅度");
+	sprintf(display, "9.RDS Val Set");
 	PrintGB(1,0,display);
 	
 	sprintf(display, "*");
 	PrintGB(0,0,display);
 	
-	sprintf(display, "10. 调制度粗调");
+	sprintf(display, "10.Modulate Coarse");
 	PrintGB(1,1,display);
 }
 void SetSystemParamFiveB(void)
 {	
 	u8 display[50];
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "9.RDS 幅度");
+	sprintf(display, "9.RDS Val Set");
 	PrintGB(1,0,display);
 	
 	
-	sprintf(display, "10. 调制度粗调");
+	sprintf(display, "10.Modulate Coarse");
 	PrintGB(1,1,display);
 	
 	sprintf(display, "*");
@@ -1301,7 +1301,7 @@ void SetJLQMODULATIONMODE(int s)
 	u8 display[50];
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "调制模式:");
+	sprintf(display, "Audio Mode:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);
@@ -1310,30 +1310,30 @@ void SetJLQMODULATIONMODE(int s)
 	if(LCD_Pre_Emphasis == 0)//0:关闭 1:立体声 2:L单声道 4:R单声道 6:L+R声道
 	{
 		SelectedNum = 1;		
-		sprintf(display, "  关闭  ");
+		sprintf(display, "  CLOSE  ");
 	}
 	else if(LCD_Pre_Emphasis == 1)
 	{
 		SelectedNum = 2;		
-		sprintf(display, "  立体声  ");
+		sprintf(display, "  STEREO  ");
 	}
 	else if(LCD_Pre_Emphasis == 2)
 	{
 		SelectedNum = 3;	 	
-		sprintf(display, " L单声道 ");
+		sprintf(display, " L Sound ");
 	}
 	else if(LCD_Pre_Emphasis == 4)
 	{
 		SelectedNum = 4;	 	
-		sprintf(display, " R单声道 ");
+		sprintf(display, " R Sound ");
 	}
 	else if(LCD_Pre_Emphasis == 6)
 	{
 		SelectedNum = 5;	 	
-		sprintf(display, " L+R声道 ");
+		sprintf(display, " L+R Sound");
 	}
 
-	PrintGB(5,1,display);
+	PrintGB(3,1,display);
 }	   
 void SetJLQMODULATIONMODEAdjust(int s)
 {
@@ -1342,7 +1342,7 @@ void SetJLQMODULATIONMODEAdjust(int s)
 	if(s == 0)
 	{
 	 	LCD_Write_Command(0x01);//清屏
-		sprintf(display, "调制模式:");
+		sprintf(display, "Audio Mode:");
 		PrintGB(1,0,display);
 		sprintf(display, "*");
 		PrintGB(0,0,display);
@@ -1350,29 +1350,29 @@ void SetJLQMODULATIONMODEAdjust(int s)
 		if(LCD_Pre_Emphasis == 0)//0:关闭 1:立体声 2:L单声道 4:R单声道 6:L+R声道
 		{
 			SelectedNum = 1;		
-			sprintf(display, " [关闭] ");
+			sprintf(display, " [CLOSE] ");
 		}
 		else if(LCD_Pre_Emphasis == 1)
 		{
 			SelectedNum = 2;		
-			sprintf(display, " [立体声] ");
+			sprintf(display, " [STEREO] ");
 		}
 		else if(LCD_Pre_Emphasis == 2)
 		{
 			SelectedNum = 3;	 	
-			sprintf(display, "[L单声道]");
+			sprintf(display, "[L Sound]");
 		}
 		else if(LCD_Pre_Emphasis == 4)
 		{
 			SelectedNum = 4;	 	
-			sprintf(display, "[R单声道]");
+			sprintf(display, "[R Sound]");
 		}
 		else if(LCD_Pre_Emphasis == 6)
 		{
 			SelectedNum = 5;	 	
-			sprintf(display, "[L+R声道]");
+			sprintf(display, "[L+R Sound]");
 		}
-		PrintGB(5,1,display);
+		PrintGB(3,1,display);
 		return;
 	} 
 	SelectedNum +=s;
@@ -1387,30 +1387,30 @@ void SetJLQMODULATIONMODEAdjust(int s)
 	if(SelectedNum == 1)	    
 	{
 		LCD_Pre_Emphasis = 0;
-		sprintf(display, " [关闭]   ");
+		sprintf(display, " [CLOSE]    ");
 	}
 	else if(SelectedNum == 2) 	
 	{
 		LCD_Pre_Emphasis = 1;
-		sprintf(display, " [立体声] ");
+		sprintf(display, " [STEREO]  ");
 	}
 	else if(SelectedNum == 3)	
 	{
  		LCD_Pre_Emphasis = 2;
-		sprintf(display, "[L单声道]");
+		sprintf(display, " [L Sound]  ");
 	} 
 	else if(SelectedNum == 4)	
 	{
  		LCD_Pre_Emphasis = 4;
-		sprintf(display, "[R单声道]");
+		sprintf(display, " [R Sound]  ");
 	}
 	else if(SelectedNum == 5)	
 	{
  		LCD_Pre_Emphasis = 6;
-		sprintf(display, "[L+R声道]");
+		sprintf(display, " [L+R Sound]");
 	}
 
-	PrintGB(5,1,display);
+	PrintGB(3,1,display);
 }
 void SetJLQMODULATIONMODEhandle(int s)
 {
@@ -1421,7 +1421,7 @@ void SetJLQMODULATIONMODEhandle(int s)
 		return;
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "调制模式:");
+	sprintf(display, "Audio Mode:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);	
@@ -1431,47 +1431,49 @@ void SetJLQMODULATIONMODEhandle(int s)
 	 	if(LCD_Pre_Emphasis == 0)//0:关闭 1:立体声 2:L单声道 4:R单声道 6:L+R声道
 		{
 			SelectedNum = 1;		 
-			sprintf(display, "  关闭    ");
+			sprintf(display, "  CLOSE  ");
 		}
 		else if(LCD_Pre_Emphasis == 1)
 		{
 			SelectedNum = 2;		
-			sprintf(display, "  立体声  ");
+			sprintf(display, "  STEREO  ");
 		}
 		else if(LCD_Pre_Emphasis == 2)
 		{
 			SelectedNum = 3;	 	
-			sprintf(display, " L单声道 ");
+			sprintf(display, " L Sound ");
 		}
 		else if(LCD_Pre_Emphasis == 4)
 		{
 			SelectedNum = 4;	 	
-			sprintf(display, " R单声道 ");
+			sprintf(display, " R Sound ");
 		}
 		else if(LCD_Pre_Emphasis == 6)
 		{
 			SelectedNum = 5;	 	
-			sprintf(display, " L+R声道 ");
+			sprintf(display, " L+R Sound");
 		}
-		PrintGB(5,1,display); 
+		PrintGB(3,1,display); 
 
 		//printf("jlq pep init : %d......\n",OLED_Pre_Emphasis);
-
-		fEitRTU = TRUE;
-		OSSemPend(JLQRS232SEM, 0, &err);
-		OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
-		OLED_SendBuf[1]= 0x35;
-		OLED_SendBuf[2]= 0xC3;
-		OLED_SendBuf[3]= 0xFC;
-		OLED_SendBuf[4]= 0xC1;
-		OLED_SendBuf[5]= 0xEE;
-		OLED_SendBuf[6]= 0xC9;
-		OLED_SendBuf[7]= 0xE8;
-		OLED_SendBuf[8]= 0x01;
-		OLED_SendBuf[9]= (u8)(LCD_Pre_Emphasis);	
-		Excit_RS232_Send(OLED_SendBuf,10, 20); 
-		OSSemPost(JLQRS232SEM);
-		fEitRTU = FALSE;
+		if(g_TMTLink[0] == 1) 
+		{
+			fEitRTU = TRUE;
+			OSSemPend(JLQRS232SEM, 0, &err);
+			OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
+			OLED_SendBuf[1]= 0x35;
+			OLED_SendBuf[2]= 0xC3;
+			OLED_SendBuf[3]= 0xFC;
+			OLED_SendBuf[4]= 0xC1;
+			OLED_SendBuf[5]= 0xEE;
+			OLED_SendBuf[6]= 0xC9;
+			OLED_SendBuf[7]= 0xE8;
+			OLED_SendBuf[8]= 0x01;
+			OLED_SendBuf[9]= (u8)(LCD_Pre_Emphasis);	
+			Excit_RS232_Send(OLED_SendBuf,10, 20); 
+			OSSemPost(JLQRS232SEM);
+			fEitRTU = FALSE;
+		}
 	}
 	else
 	{
@@ -1479,30 +1481,30 @@ void SetJLQMODULATIONMODEhandle(int s)
 		if(LCD_Pre_Emphasis == 0)//0:关闭 1:立体声 2:L单声道 4:R单声道 6:L+R声道
 		{
 			SelectedNum = 1;		
-			sprintf(display, "  关闭  ");
+			sprintf(display, "  CLOSE  ");
 		}
 		else if(LCD_Pre_Emphasis == 1)
 		{
 			SelectedNum = 2;		
-			sprintf(display, "  立体声  ");
+			sprintf(display, "  STEREO  ");
 		}
 		else if(LCD_Pre_Emphasis == 2)
 		{
 			SelectedNum = 3;	 	
-			sprintf(display, " L单声道 ");
+			sprintf(display, " L Sound ");
 		}
 		else if(LCD_Pre_Emphasis == 4)
 		{
 			SelectedNum = 4;	 	
-			sprintf(display, " R单声道 ");
+			sprintf(display, " R Sound ");
 		}
 		else if(LCD_Pre_Emphasis == 6)
 		{
 			SelectedNum = 5;	 	
-			sprintf(display, " L+R声道 ");
+			sprintf(display, " L+R Sound");
 		}
 	
-		PrintGB(5,1,display);
+		PrintGB(3,1,display);
 //		printf("jlq pep no......\n"); 
 	}
 }
@@ -1512,7 +1514,7 @@ void SetJLQMODULATIONVAL(int s)
 	u8 display[50];
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "调制度细调:");
+	sprintf(display, "Modulate Fine:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);
@@ -1520,7 +1522,7 @@ void SetJLQMODULATIONVAL(int s)
 	LCD_JLQPWR_Gain = g_DI.Excitdata.FMMODULATIONVAL;
 
 	sprintf(display, " %3d   ",LCD_JLQPWR_Gain);
-	PrintGB(7,0,display);
+	PrintGB(7,1,display);
 }	   
 void SetJLQMODULATIONVALAdjust(int s)
 {
@@ -1529,13 +1531,13 @@ void SetJLQMODULATIONVALAdjust(int s)
 	if(s == 0)
 	{
 	 	LCD_Write_Command(0x01);//清屏
-		sprintf(display, "调制度细调:");
+		sprintf(display, "Modulate Fine:");
 		PrintGB(1,0,display);
 		sprintf(display, "*");
 		PrintGB(0,0,display);
 	
 		sprintf(display, "[%3d]  ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display);
+		PrintGB(7,1,display);
 		return;
 	} 
 	LCD_JLQPWR_Gain +=s;
@@ -1548,7 +1550,7 @@ void SetJLQMODULATIONVALAdjust(int s)
 		LCD_JLQPWR_Gain = 0;		
 	}
 	sprintf(display, "[%3d]  ",LCD_JLQPWR_Gain);
-	PrintGB(7,0,display);
+	PrintGB(7,1,display);
 }
 void SetJLQMODULATIONVALhandle(int s)
 {
@@ -1559,7 +1561,7 @@ void SetJLQMODULATIONVALhandle(int s)
 		return;
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "调制度细调:");
+	sprintf(display, "Modulate Fine:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);	
@@ -1567,30 +1569,33 @@ void SetJLQMODULATIONVALhandle(int s)
 	if(FunPatONF == 1)//确定修改输出频率
 	{
 	 	sprintf(display, " %3d   ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display); 
-
-		fEitRTU = TRUE;
-		OSSemPend(JLQRS232SEM, 0, &err);
-		OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
-		OLED_SendBuf[1]= 0x35;
-		OLED_SendBuf[2]= 0xC3;
-		OLED_SendBuf[3]= 0xFC;
-		OLED_SendBuf[4]= 0xC1;
-		OLED_SendBuf[5]= 0xEE;
-		OLED_SendBuf[6]= 0xC9;
-		OLED_SendBuf[7]= 0xE8;
-		OLED_SendBuf[8]= 0x0C;
-		OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
-		Excit_RS232_Send(OLED_SendBuf,10, 20); 
-		OSSemPost(JLQRS232SEM);
-		fEitRTU = FALSE; 
+		PrintGB(7,1,display); 
+		
+		if(g_TMTLink[0] == 1) 
+		{
+			fEitRTU = TRUE;
+			OSSemPend(JLQRS232SEM, 0, &err);
+			OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
+			OLED_SendBuf[1]= 0x35;
+			OLED_SendBuf[2]= 0xC3;
+			OLED_SendBuf[3]= 0xFC;
+			OLED_SendBuf[4]= 0xC1;
+			OLED_SendBuf[5]= 0xEE;
+			OLED_SendBuf[6]= 0xC9;
+			OLED_SendBuf[7]= 0xE8;
+			OLED_SendBuf[8]= 0x0C;
+			OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
+			Excit_RS232_Send(OLED_SendBuf,10, 20); 
+			OSSemPost(JLQRS232SEM);
+			fEitRTU = FALSE; 
+		}
 	}
 	else
 	{
 		LCD_JLQPWR_Gain = g_DI.Excitdata.FMMODULATIONVAL;
 
 		sprintf(display, " %3d   ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display);
+		PrintGB(7,1,display);
 
 	}
 }
@@ -1600,7 +1605,7 @@ void SetJLQRdsVal(int s)
 	u8 display[50];
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "RDS 幅度:");
+	sprintf(display, "RDS Val:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);
@@ -1617,7 +1622,7 @@ void SetJLQRdsValAdjust(int s)
 	if(s == 0)
 	{
 	 	LCD_Write_Command(0x01);//清屏
-		sprintf(display, "RDS 幅度:");
+		sprintf(display, "RDS Val:");
 		PrintGB(1,0,display);
 		sprintf(display, "*");
 		PrintGB(0,0,display);
@@ -1647,7 +1652,7 @@ void SetJLQRdsValhandle(int s)
 		return;
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "RDS 幅度:");
+	sprintf(display, "RDS Val:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);	
@@ -1656,22 +1661,24 @@ void SetJLQRdsValhandle(int s)
 	{
 	 	sprintf(display, " %2d   ",LCD_JLQPWR_Gain);
 		PrintGB(6,0,display); 
-
-		fEitRTU = TRUE;
-		OSSemPend(JLQRS232SEM, 0, &err);
-		OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
-		OLED_SendBuf[1]= 0x35;
-		OLED_SendBuf[2]= 0xC3;
-		OLED_SendBuf[3]= 0xFC;
-		OLED_SendBuf[4]= 0xC1;
-		OLED_SendBuf[5]= 0xEE;
-		OLED_SendBuf[6]= 0xC9;
-		OLED_SendBuf[7]= 0xE8;
-		OLED_SendBuf[8]= 0x0A;
-		OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
-		Excit_RS232_Send(OLED_SendBuf,10, 20); 
-		OSSemPost(JLQRS232SEM);
-		fEitRTU = FALSE; 
+		if(g_TMTLink[0] == 1) 
+		{
+			fEitRTU = TRUE;
+			OSSemPend(JLQRS232SEM, 0, &err);
+			OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
+			OLED_SendBuf[1]= 0x35;
+			OLED_SendBuf[2]= 0xC3;
+			OLED_SendBuf[3]= 0xFC;
+			OLED_SendBuf[4]= 0xC1;
+			OLED_SendBuf[5]= 0xEE;
+			OLED_SendBuf[6]= 0xC9;
+			OLED_SendBuf[7]= 0xE8;
+			OLED_SendBuf[8]= 0x0A;
+			OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
+			Excit_RS232_Send(OLED_SendBuf,10, 20); 
+			OSSemPost(JLQRS232SEM);
+			fEitRTU = FALSE;
+		}			
 	}
 	else
 	{
@@ -1688,7 +1695,7 @@ void SetJLQMduVal(int s)
 	u8 display[50];
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "调制度粗调:");
+	sprintf(display, "Modulate Coarse:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);
@@ -1696,7 +1703,7 @@ void SetJLQMduVal(int s)
 	LCD_JLQPWR_Gain = g_DI.Excitdata.FMSIGNAL_VAL;
 
 	sprintf(display, " %3d   ",LCD_JLQPWR_Gain);
-	PrintGB(7,0,display);
+	PrintGB(7,1,display);
 }	   
 void SetJLQMduValAdjust(int s)
 {
@@ -1705,13 +1712,13 @@ void SetJLQMduValAdjust(int s)
 	if(s == 0)
 	{
 	 	LCD_Write_Command(0x01);//清屏
-		sprintf(display, "调制度粗调:");
+		sprintf(display, "Modulate Coarse:");
 		PrintGB(1,0,display);
 		sprintf(display, "*");
 		PrintGB(0,0,display);
 	
 		sprintf(display, "[%3d]  ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display);
+		PrintGB(7,1,display);
 		return;
 	} 
 	LCD_JLQPWR_Gain +=s;
@@ -1724,7 +1731,7 @@ void SetJLQMduValAdjust(int s)
 		LCD_JLQPWR_Gain = 0;		
 	}
 	sprintf(display, "[%3d]  ",LCD_JLQPWR_Gain);
-	PrintGB(7,0,display);
+	PrintGB(7,1,display);
 }
 void SetJLQMduValhandle(int s)
 {
@@ -1735,7 +1742,7 @@ void SetJLQMduValhandle(int s)
 		return;
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "调制度粗调:");
+	sprintf(display, "Modulate Coarse:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);	
@@ -1743,30 +1750,33 @@ void SetJLQMduValhandle(int s)
 	if(FunPatONF == 1)//确定修改输出频率
 	{
 	 	sprintf(display, " %3d   ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display); 
-
-		fEitRTU = TRUE;
-		OSSemPend(JLQRS232SEM, 0, &err);
-		OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
-		OLED_SendBuf[1]= 0x35;
-		OLED_SendBuf[2]= 0xC3;
-		OLED_SendBuf[3]= 0xFC;
-		OLED_SendBuf[4]= 0xC1;
-		OLED_SendBuf[5]= 0xEE;
-		OLED_SendBuf[6]= 0xC9;
-		OLED_SendBuf[7]= 0xE8;
-		OLED_SendBuf[8]= 0x11;
-		OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
-		Excit_RS232_Send(OLED_SendBuf,10, 20); 
-		OSSemPost(JLQRS232SEM);
-		fEitRTU = FALSE; 
+		PrintGB(7,1,display); 
+		
+		if(g_TMTLink[0] == 1) 
+		{
+			fEitRTU = TRUE;
+			OSSemPend(JLQRS232SEM, 0, &err);
+			OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
+			OLED_SendBuf[1]= 0x35;
+			OLED_SendBuf[2]= 0xC3;
+			OLED_SendBuf[3]= 0xFC;
+			OLED_SendBuf[4]= 0xC1;
+			OLED_SendBuf[5]= 0xEE;
+			OLED_SendBuf[6]= 0xC9;
+			OLED_SendBuf[7]= 0xE8;
+			OLED_SendBuf[8]= 0x11;
+			OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
+			Excit_RS232_Send(OLED_SendBuf,10, 20); 
+			OSSemPost(JLQRS232SEM);
+			fEitRTU = FALSE; 
+		}
 	}
 	else
 	{
 		LCD_JLQPWR_Gain = g_DI.Excitdata.FMSIGNAL_VAL;
 
 		sprintf(display, " %3d   ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display);
+		PrintGB(7,1,display);
 
 	}
 }

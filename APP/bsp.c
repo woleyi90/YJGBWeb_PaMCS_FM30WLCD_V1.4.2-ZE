@@ -209,7 +209,7 @@ void BSP_Init(void)
 
 	Led_Display = 0x01;
 	SM1668_DisplayLED(0xC0,Led_Display);//PWR÷∏ æµ∆¡¡
-	
+	 
 	printf("bsp web ok 20200320...........\r\n"); 
 
 
