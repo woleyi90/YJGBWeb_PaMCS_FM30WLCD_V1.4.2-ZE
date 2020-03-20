@@ -1217,7 +1217,7 @@ void SetJLQGain(int s)
 	LCD_JLQPWR_Gain = g_DI.Excitdata.FMGain_RF;
 
 	sprintf(display, " %3d ",LCD_JLQPWR_Gain);
-	PrintGB(7,0,display);
+	PrintGB(6,1,display);
 }	   
 void SetJLQGainAdjust(int s)
 {
@@ -1232,7 +1232,7 @@ void SetJLQGainAdjust(int s)
 		PrintGB(0,0,display);
 	
 		sprintf(display, "[%3d]",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display);
+		PrintGB(6,1,display);
 		return;
 	} 
 	LCD_JLQPWR_Gain +=s;
@@ -1245,7 +1245,7 @@ void SetJLQGainAdjust(int s)
 		LCD_JLQPWR_Gain = 0;		
 	}
 	sprintf(display, "[%3d]",LCD_JLQPWR_Gain);
-	PrintGB(5,0,display);
+	PrintGB(6,1,display);
 }
 void SetJLQGainhandle(int s)
 {
@@ -1264,7 +1264,7 @@ void SetJLQGainhandle(int s)
 	if(FunPatONF == 1)//确定修改输出频率
 	{
 	 	sprintf(display, " %3d ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display); 
+		PrintGB(6,1,display); 
 
 //		printf("jlq Gain init......\n");
 		if(g_TMTLink[0] == 1) 
@@ -1291,7 +1291,7 @@ void SetJLQGainhandle(int s)
 		LCD_JLQPWR_Gain = g_DI.Excitdata.FMGain_RF;
 
 		sprintf(display, " %3d ",LCD_JLQPWR_Gain);
-		PrintGB(7,0,display);
+		PrintGB(6,1,display);
 //		printf("jlq gain no......\n"); 
 	}
 }
