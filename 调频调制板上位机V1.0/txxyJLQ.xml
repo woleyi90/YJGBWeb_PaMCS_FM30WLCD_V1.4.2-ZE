@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tables sblx="1050" name="发射机通信协议">
+	<command>
+		<item cmd="0x5A" visible="1" disc="  搜索发射机接口命令" dir="下" bcport="8888" parm="-" needback="0x0021,0x0022,0x0023,0x0024,0x0025,0x000C,0x0030,0x0031,0x0035,0x0036,0x003A,0x003B,0x0026,0x0027"/>
+
+		<item cmd="0x03" visible="1" disc="  读台站编码" dir="下" bcport="0" parm="0x0001"/>
+		<item cmd="0x10" visible="1" disc="  设台站编码" dir="下" bcport="0" parm="0x0001"/>
+	
+		<item cmd="0x03" visible="1" disc="  读激励器1参数" dir="上" bcport="0" parm="0xB002,0xB023,0xB007,0xB008,0xB00E,0xB022,0xB020,0xB021,0xB027"/>
+		
+		<item cmd="0x10" visible="1" disc="  设激励器1参数" dir="下" bcport="0" parm="0xB023;0xB007;0xB008;0xB00E;0xB022;0xB020;0xB021,0xB027"/>		
+		<item cmd="0x10" visible="1" disc="  设RDS数据" dir="下" bcport="0" parm="0xB025"/>	
+   
+		<item cmd="0x03" visible="1" disc="  读IP信息" dir="上" bcport="0" parm="0x0020,0x0022,0x0023,0x0024,0x0025,0x0026,0x0027,0x0028,0x0029,0x002A,0x002B,0x003F,0x0040,0x0041,0x0042,0x0043,0x0044,0x0030,0x0031,0x0032,0x0033,0x0034,0x0035,0x0036,0x0037,0x0038,0x0039,0x003A,0x003B,0x003C,0x003D,0x003E"/>
+		<item cmd="0x10" visible="1" disc="  写IP信息" dir="下" bcport="0" parm="0x0020,0x0022,0x0023,0x0024,0x0025,0x0026,0x0027,0x0028,0x0029,0x002A,0x002B,0x003F,0x0040,0x0041,0x0042"/>
+		
+		<item cmd="0x03" visible="1" disc="  读远程主机设置" dir="上" bcport="0" parm="0x0030,0x0031,0x0032,0x0033,0x0034,0x0035,0x0036,0x0037,0x0038,0x0039,0x003A,0x003B,0x003C,0x003D,0x003E"/>
+		<item cmd="0x10" visible="1" disc="  写远程主机设置" dir="下" bcport="0" parm="0x0030,0x0031,0x0032,0x0033,0x0034,0x0035,0x0036,0x0037,0x0038,0x0039,0x003A,0x003B,0x003C,0x003D,0x003E"/>
+	
+	</command>
+	<parameter>
+
+		<item parno="0x0001" name="发射台编号" type="V_STRING" len="17" deci="0" detail="-"/>
+		<item parno="0x0002" name="设备名称" type="V_STRING" len="32" deci="0" detail="字符串"/>
+		<item parno="0x0003" name="设备硬件版本号" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0004" name="设备软件版本号" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0005" name="生产厂家" type="V_STRING" len="32" deci="0" detail="字符串"/>
+		<item parno="0x0006" name="设备型号" type="V_STRING" len="32" deci="0" detail="字符串"/>
+		<item parno="0x000C" name="主控板CPU序列号" type="V_HEX" len="12" deci="0" detail="-"/>
+		
+		<item parno="0x0020" name="设备地址" type="V_UCHAR" len="1" deci="0" detail="-"/>
+		<item parno="0x0021" name="mac地址" type="V_HEX" len="6" deci="0" detail="-"/>
+		<item parno="0x0023" name="发射机IP地址" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0024" name="子网掩码" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0025" name="默认网关" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0026" name="本地管理1 IP" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0027" name="本地管理2 IP" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0028" name="内部联动1IP" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0029" name="内部联动1端口" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x002A" name="内部联动2IP" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x002B" name="内部联动2端口" type="V_USHORT" len="2" deci="0" detail="-"/>
+
+
+		<item parno="0x0030" name="远程主机1IP" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0031" name="远程主机1端口" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0032" name="第1组主动间隔1" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0033" name="第2组主动间隔1" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0034" name="第3组主动间隔1" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0035" name="远程主机2IP" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x0036" name="远程主机2端口" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0037" name="第1组主动间隔2" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0038" name="第2组主动间隔2" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x0039" name="第3组主动间隔2" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x003A" name="远程主机3IP" type="V_UINT_IP" len="4" deci="0" detail="-"/>
+		<item parno="0x003B" name="远程主机3端口" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x003C" name="第1组主动间隔3" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x003D" name="第2组主动间隔3" type="V_USHORT" len="2" deci="0" detail="-"/>
+		<item parno="0x003E" name="第3组主动间隔3" type="V_USHORT" len="2" deci="0" detail="-"/>
+
+		<item parno="0xB002" name="EX1.通信状态" type="V_ENUM_BIT" len="1" deci="0" detail="0,通信正常"/>
+		<item parno="0xB023" name="EX1.输出频率" type="V_FLOAT" len="4" deci="0" detail="MHz"/>
+		<item parno="0xB007" name="EX1.调制模式" type="V_ENUM" len="1" deci="0" detail="0x00,关闭;0x01,立体声;0x02,L单声道;0x03,R单声道;0x04,R单声道"/>	
+		<item parno="0xB008" name="EX1.预加重" type="V_UCHAR" len="1" deci="0" detail="0,0us;1,50us"/>
+		<item parno="0xB00E" name="EX1.功率增益" type="V_UCHAR" len="4" deci="0" detail="0~63"/>
+		<item parno="0xB022" name="EX1.调制度粗调" type="V_UCHAR" len="1" deci="0" detail="0~7"/>
+		<item parno="0xB020" name="EX1.调制度细调" type="V_UCHAR" len="1" deci="0" detail="0~255"/>
+		<item parno="0xB021" name="EX1.RDS幅度" type="V_UCHAR" len="1" deci="0" detail="0~15"/>
+		<item parno="0xB025" name="EX1.RDS数据" type="V_HEX" len="8" deci="0" detail="-"/>
+		<item parno="0xB027" name="EX1.RDS通道选择" type="V_ENUM" len="1" deci="0" detail="0x00,串口输入;0x01,57KHz副载波输入"/>
+	</parameter>
+</tables>
