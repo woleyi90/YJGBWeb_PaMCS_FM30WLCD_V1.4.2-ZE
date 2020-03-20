@@ -1209,7 +1209,7 @@ void SetJLQGain(int s)
 	u8 display[50];
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "增益:");
+	sprintf(display, "Exciter Gain:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);
@@ -1217,7 +1217,7 @@ void SetJLQGain(int s)
 	LCD_JLQPWR_Gain = g_DI.Excitdata.FMGain_RF;
 
 	sprintf(display, " %3d ",LCD_JLQPWR_Gain);
-	PrintGB(5,0,display);
+	PrintGB(7,0,display);
 }	   
 void SetJLQGainAdjust(int s)
 {
@@ -1226,13 +1226,13 @@ void SetJLQGainAdjust(int s)
 	if(s == 0)
 	{
 	 	LCD_Write_Command(0x01);//清屏
-		sprintf(display, "增益:");
+		sprintf(display, "Exciter Gain:");
 		PrintGB(1,0,display);
 		sprintf(display, "*");
 		PrintGB(0,0,display);
 	
 		sprintf(display, "[%3d]",LCD_JLQPWR_Gain);
-		PrintGB(5,0,display);
+		PrintGB(7,0,display);
 		return;
 	} 
 	LCD_JLQPWR_Gain +=s;
@@ -1256,7 +1256,7 @@ void SetJLQGainhandle(int s)
 		return;
 	
 	LCD_Write_Command(0x01);//清屏
-	sprintf(display, "增益:");
+	sprintf(display, "Exciter Gain:");
 	PrintGB(1,0,display);
 	sprintf(display, "*");
 	PrintGB(0,0,display);	
@@ -1264,31 +1264,34 @@ void SetJLQGainhandle(int s)
 	if(FunPatONF == 1)//确定修改输出频率
 	{
 	 	sprintf(display, " %3d ",LCD_JLQPWR_Gain);
-		PrintGB(5,0,display); 
+		PrintGB(7,0,display); 
 
 //		printf("jlq Gain init......\n");
-		fEitRTU = TRUE;
-		OSSemPend(JLQRS232SEM, 0, &err);
-		OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
-		OLED_SendBuf[1]= 0x35;
-		OLED_SendBuf[2]= 0xC3;
-		OLED_SendBuf[3]= 0xFC;
-		OLED_SendBuf[4]= 0xC1;
-		OLED_SendBuf[5]= 0xEE;
-		OLED_SendBuf[6]= 0xC9;
-		OLED_SendBuf[7]= 0xE8;
-		OLED_SendBuf[8]= 0x09;
-		OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
-		Excit_RS232_Send(OLED_SendBuf,10, 20); 
-		OSSemPost(JLQRS232SEM);
-		fEitRTU = FALSE; 
+		if(g_TMTLink[0] == 1) 
+		{
+			fEitRTU = TRUE;
+			OSSemPend(JLQRS232SEM, 0, &err);
+			OLED_SendBuf[0]= g_DI.Cfg.Excit_IPHead; 
+			OLED_SendBuf[1]= 0x35;
+			OLED_SendBuf[2]= 0xC3;
+			OLED_SendBuf[3]= 0xFC;
+			OLED_SendBuf[4]= 0xC1;
+			OLED_SendBuf[5]= 0xEE;
+			OLED_SendBuf[6]= 0xC9;
+			OLED_SendBuf[7]= 0xE8;
+			OLED_SendBuf[8]= 0x09;
+			OLED_SendBuf[9]= (u8)LCD_JLQPWR_Gain;	
+			Excit_RS232_Send(OLED_SendBuf,10, 20); 
+			OSSemPost(JLQRS232SEM);
+			fEitRTU = FALSE; 
+		}
 	}
 	else
 	{
 		LCD_JLQPWR_Gain = g_DI.Excitdata.FMGain_RF;
 
 		sprintf(display, " %3d ",LCD_JLQPWR_Gain);
-		PrintGB(5,0,display);
+		PrintGB(7,0,display);
 //		printf("jlq gain no......\n"); 
 	}
 }
